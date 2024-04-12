@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation</title>
+    <a href="index.html">Вернуться на главную</a>
+    <h1 style="text-align: center;">Квадрат крутится Шар меняется на квадрат Шар меняет цвет</h1>
+    <style>
+        .animated-object {
+            width: 100px;
+            height: 100px;
+            background-color: #007bff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: move 2s infinite alternate;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .transformed-object-1 {
+            transform: scale(1.2);
+        }
+
+        .transformed-object-2 {
+            transform: rotate(45deg);
+        }
+
+        .transformed-object-3 {
+            transform: skew(20deg, 10deg);
+        }
+    </style>
+        <style>
+            .animated-object2 {
+                width: 100px;
+                height: 100px;
+                background-color: #007bff;
+                border-radius: 50%;
+                position: left;
+                top: 50%;
+                left: 50%;
+                animation: changeShape 2s linear infinite alternate;
+            }
+    
+            @keyframes changeShape {
+                0% {
+                    border-radius: 50%;
+                }
+                100% {
+                    border-radius: 0%;
+                }
+            }
+        </style>
+        <style>
+            .animated-object3 {
+                width: 100px;
+                height: 100px;
+                background-color: #007bff;
+                border-radius: 50%;
+                position: right;
+                top: 50%;
+                left: 50%;
+                animation: changeColor 2s linear infinite alternate;
+            }
+    
+            @keyframes changeColor {
+                0% {
+                    background-color: #007bff;
+                }
+                100% {
+                    background-color: #ff6347;
+                }
+            }
+        </style>
+</head>
+<body>
+    <div class="animated-object"></div>
+    <div class="animated-object2"></div>
+    <div class="animated-object3"></div>
+    <div class="transformed-object-1"></div>
+    <div class="transformed-object-2"></div>
+    <div class="transformed-object-3"></div>
+</body>
+<svg class="animated-svg" viewBox="0 0 100 100">
+    <!-- Анимация моргания глаза -->
+    <circle cx="30" cy="40" r="10" fill="black">
+        <animate attributeName="r" values="10; 15; 10" dur="1s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="70" cy="40" r="10" fill="black">
+        <animate attributeName="r" values="10; 15; 10" dur="1s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Анимация мигания звезды -->
+    <polygon points="50,10 60,40 90,40 65,60 75,90 50,75 25,90 35,60 10,40 40,40" fill="yellow">
+        <animate attributeName="points" values="50,10 60,40 80,40 65,60 75,90 50,75 25,90 35,60 10,40 40,40; 
+                                               50,10 60,40 90,40 65,60 75,90 50,75 25,90 35,60 10,40 40,40" dur="2s" repeatCount="indefinite" />
+    </polygon>
+
+    <!-- Анимация вращения круга -->
+    <circle cx="25" cy="25" r="8" fill="blue">
+        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="2s" repeatCount="indefinite" />
+    </circle>
+</svg>
+</html>

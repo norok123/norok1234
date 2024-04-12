@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Коты и мыши</title>
+<style>
+  .container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cat img {
+  vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Рассказ про котов и мышей</h2>
+  <div id="story">
+    <p>Однажды в доме жили <span class="cat">коты</span> и <span class="mouse">мыши</span>.
+    Каждый день <span class="cat">коты</span> ловили <span class="mouse">мышей</span>.</p>
+    <p>Но однажды одна <span class="mouse">мышь</span> оказалась слишком смелой и встала
+    на <span class="cat">кота</span> во имя свободы.</p>
+    <p>С того дня <span class="cat">коты</span> и <span class="mouse">мыши</span>
+    стали друзьями и жили вместе в мире и согласии.</p>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+  var originalText = $(".cat").html(); // Сохраняем оригинальный текст
+  
+  // При наведении мыши на слово "кот"
+  $(".cat").mouseenter(function(){
+    $(this).html('<img src="images/nadpis.jpg" alt="Кот">');
+  });
+
+  // При уходе мыши с слова "кот"
+  $(".cat").mouseleave(function(){
+    $(this).html(originalText); // Возвращаем оригинальный текст
+  });
+});
+
+</script>
+</body>
+</html>

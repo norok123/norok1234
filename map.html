@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Политическая карта мира</title>
+  <style>
+    /* Стили для карты */
+    #map {
+      width: 700px;
+      height: auto;
+      margin-top: 10px; /* Дополнительный отступ над картой */
+    }
+
+    #tooltip {
+      position: absolute;
+      background-color: #007acc;
+      color: white;
+      padding: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h1 id="branchTitle">Часто прослушиваемые жанры песен</h1>
+    <img id="map" src="images/world-map.jpg" width="700px" height="auto" alt="Map" usemap="#image-map">
+
+    <map name="image-map">
+      <area shape="rect" coords="61,90,134,137" href="#1-rect" alt="Страна: США, Жанр: Хип-хоп, Популярный исполнитель жанра: Eminem, Основатель жанра: Клив Кемпбел">
+      <area shape="rect" coords="430,81,500,100" href="#2-rect" alt="Страна: Казахстан, Жанр: Поп, Популярный исполнитель жанра: Michael Jackson, Основатель жанра: Madonna">
+      <area shape="rect" coords="455,74,490,80" href="#3-rect" alt="Страна: Казахстан, Жанр: Поп, Популярный исполнитель жанра: Michael Jackson, Основатель жанра: Madonna">
+      <area shape="rect" coords="20,37,56,56" href="#4-rect" alt="Страна: США, Жанр: Хип-хоп, Популярный исполнитель жанра: Eminem, Основатель жанра: Клив Кемпбел">
+      <area shape="rect" coords="601,279,667,313" href="#5-rect" alt="Страна: Австралия, Жанр: Рок-н-ролл, Популярный исполнитель жанра: AC/DC, Основатель жанра: Кайли Миног">
+      <area shape="rect" coords="390,36,620,75" href="#6-rect" alt="Страна: Российская Федерация, Жанр: Русский рэп, Популярный исполнитель жанра: Oxxxymiron, Основатель жанра: Александр Астров">
+    </map>
+
+    <div id="tooltip"></div>
+  </section>
+
+  <script>
+    /* Скрипт для карты */
+    const areas = document.querySelectorAll('area');
+    const tooltip = document.getElementById('tooltip');
+
+    areas.forEach(area => {
+      area.addEventListener('mouseover', function() {
+        const info = this.getAttribute('alt').split(', ');
+        const country = info[0].split(': ')[1];
+        const genre = info[1].split(': ')[1];
+        const popularArtist = info[2].split(': ')[1];
+        const genreFounder = info[3].split(': ')[1];
+        const coords = this.getBoundingClientRect();
+        tooltip.style.top = coords.top + 'px';
+        tooltip.style.left = coords.right + 'px';
+        tooltip.innerHTML = '<ul><li>Страна: ' + country + '</li><li>Жанр: ' + genre + '</li><li>Популярный исполнитель: ' + popularArtist + '</li><li>Основатель жанра: ' + genreFounder + '</li></ul>';
+        tooltip.style.display = 'block';
+      });
+
+      area.addEventListener('mouseout', function() {
+        tooltip.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>

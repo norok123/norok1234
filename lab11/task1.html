@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вычисление значения z</title>
+    <script>
+        function calculateZ() {
+            // Получаем значения x и y из полей ввода
+            var x = parseFloat(document.getElementById('x').value);
+            var y = parseFloat(document.getElementById('y').value);
+
+            // Вычисляем значение z в соответствии с условием
+            var z;
+            if (x > y) {
+                z = x - y;
+            } else {
+                z = y - x + 1;
+            }
+
+            // Выводим результат в элемент с id "result"
+            document.getElementById('result').textContent = 'z = ' + z;
+        }
+    </script>
+</head>
+<body>
+    <h2>Вычисление значения z</h2>
+    <p>Введите значения x и y:</p>
+    <label for="x">x:</label>
+    <input type="number" id="x"><br><br>
+    <label for="y">y:</label>
+    <input type="number" id="y"><br><br>
+    <button onclick="calculateZ()">Вычислить z</button>
+    <p id="result"></p>
+</body>
+</html>

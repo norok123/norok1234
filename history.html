@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Land</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  #error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  </style>
+</head>
+<a href="index.html">Вернуться на главную</a>
+<body>
+    <h1 style="text-align: center;color: white;">История музыки</h1>
+    <h4 style="color: white;">История музыки, иногда называемая историческим музыковедением, представляет собой очень разнообразную область более широкой дисциплины музыковедения, которая изучает музыку с исторической точки зрения. Теоретически «история музыки» может относиться к изучению истории любого типа или жанра музыки.</h4>
+    
+    <div class="container">
+      <h2>Форма обратной связи</h2>
+      <form id="contactForm" onsubmit="return validateForm()">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required><br>
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+    
+        <label for="message">Сообщение:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+    
+        <input type="submit" value="Отправить">
+      </form>
+      <div id="error-message"></div>
+      
+      <button onclick="toggleData()">Отобразить/скрыть данные</button>
+      <div id="dataContainer" style="display: none;"></div>
+    </div>  
+    
+    <script>
+    // Создание пользовательского объекта для хранения данных
+var userData = {
+    name: "",
+    email: "",
+    message: ""
+  };
+  
+  // Функция для сохранения данных, введенных пользователем
+  function saveData() {
+    userData.name = document.getElementById('name').value;
+    userData.email = document.getElementById('email').value;
+    userData.message = document.getElementById('message').value;
+  }
+  
+  // Функция для отображения или скрытия данных на странице
+  function toggleData() {
+    var dataContainer = document.getElementById('dataContainer');
+    var display = dataContainer.style.display;
+    if (display === "none") {
+      dataContainer.style.display = "block";
+      displayData();
+    } else {
+      dataContainer.style.display = "none";
+    }
+  }
+  
+  // Функция для отображения данных на странице
+  function displayData() {
+    var dataContainer = document.getElementById('dataContainer');
+    dataContainer.innerHTML = "<h3>Данные пользователя:</h3>" +
+                              "<p><strong>Имя:</strong> " + userData.name + "</p>" +
+                              "<p><strong>Email:</strong> " + userData.email + "</p>" +
+                              "<p><strong>Сообщение:</strong> " + userData.message + "</p>";
+  }
+  
+    </script>
+    <script>
+      function validateForm() {
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+  
+    var errorMessage = "";
+  
+    if (name == "") {
+      errorMessage += "Пожалуйста, введите ваше имя.\n";
+    }
+    if (email == "") {
+      errorMessage += "Пожалуйста, введите ваш email.\n";
+    } else if (!validateEmail(email)) {
+      errorMessage += "Пожалуйста, введите корректный email.\n";
+    }
+    if (message == "") {
+      errorMessage += "Пожалуйста, введите ваше сообщение.\n";
+    }
+  
+    if (errorMessage !== "") {
+      document.getElementById('error-message').innerText = errorMessage;
+      return false;
+    }
+  
+    // Здесь может быть отправка данных формы на сервер или другие действия
+    alert("Ваше сообщение отправлено!");
+  
+    return true;
+  }
+  
+  function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  }
+  
+    </script>
+      <div class="site-info">
+        <p>&copy; 2023 My Site. All rights reserved.</p>
+        <p>Developed by Yerlan Baltabayev.</p>
+      </div>
+    </body>
+</html>
